@@ -17,11 +17,7 @@ import { AuthModule } from './auth/auth.module';
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         type: 'postgres',
-        host: configService.get('DB_HOST', 'localhost'),
-        port: configService.get('DB_PORT', 5432),
-        username: configService.get('DB_USERNAME', 'postgres'),
-        password: configService.get('DB_PASSWORD', 'root'),
-        database: configService.get('DB_DATABASE', 'postgres'),
+        url: configService.get('DATABASE_URL', 'postgres://postgres:root@localhost:5432/postgres'),
         entities: [__dirname + '/**/*.entity{.js,.ts}'],
         synchronize: true,
       }),
