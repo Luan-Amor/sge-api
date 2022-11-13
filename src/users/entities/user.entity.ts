@@ -5,9 +5,7 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-  DeleteDateColumn,
-  OneToOne,
-  JoinColumn,
+  DeleteDateColumn
 } from 'typeorm';
 
 @Entity('user')
@@ -27,7 +25,7 @@ export class User {
   @Column()
   password: string;
 
-  @Column()
+  @Column({nullable: true})
   gender: string;
 
   @Column()

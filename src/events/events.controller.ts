@@ -32,6 +32,12 @@ export class EventsController {
     return this.eventsService.findAll();
   }
 
+  @Get('users')
+  @UseGuards(JwtAuthGuard)
+  findAllByUser(@Request() req: any) {
+    return this.eventsService.findAllByUser(req.user.userId);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.eventsService.findOne(+id);

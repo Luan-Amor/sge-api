@@ -33,6 +33,9 @@ export class EnrollmentsService {
       relations: { event: true },
     });
   }
+  async findOne(userId: string, eventId: number) {
+    return await this.getEnrollment(userId, eventId);
+  }
 
   async updatePayment(userId: string, eventId: number) {
     const enroll = await this.getEnrollment(userId, eventId);

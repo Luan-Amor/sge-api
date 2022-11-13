@@ -26,7 +26,13 @@ export class EventsService {
 
   async findAll() {
     return (
-      await this.eventsRepository.find({ relations: { videos: true } })
+      await this.eventsRepository.find()
+    ).map((event) => new EventDto(event));
+  }
+  
+  async findAllByUser(id: string) {
+    return (
+      await this.eventsRepository.find({ where: { ownerId: id } })
     ).map((event) => new EventDto(event));
   }
 
