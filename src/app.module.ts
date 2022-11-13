@@ -18,6 +18,7 @@ import { AuthModule } from './auth/auth.module';
       useFactory: (configService: ConfigService) => ({
         type: 'postgres',
         url: configService.get('DATABASE_URL', 'postgres://postgres:root@localhost:5432/postgres'),
+        ssl: true,
         entities: [__dirname + '/**/*.entity{.js,.ts}'],
         synchronize: true,
       }),
