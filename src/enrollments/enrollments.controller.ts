@@ -27,6 +27,12 @@ export class EnrollmentsController {
     return this.enrollmentsService.findAll(req.user.userId);
   }
 
+  @Get('/events/:eventId')
+  @UseGuards(JwtAuthGuard)
+  findAllByEvent(@Request() req: any, @Param('eventId') eventId: string) {
+    return this.enrollmentsService.findEnrollmentsById(req.user.userId, +eventId);
+  }
+
   @Get(':eventId')
   @UseGuards(JwtAuthGuard)
   findOne(@Request() req: any,  @Param('eventId') eventId: string) {

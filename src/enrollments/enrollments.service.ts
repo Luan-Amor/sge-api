@@ -37,6 +37,14 @@ export class EnrollmentsService {
     return await this.getEnrollment(userId, eventId);
   }
 
+  async findEnrollmentsById(userId: string, eventId: number) {
+    const result = await this.enrollRepository.find({
+      where: { eventId }
+    });
+
+    return result;
+  }
+
   async updatePayment(userId: string, eventId: number) {
     const enroll = await this.getEnrollment(userId, eventId);
     if (!enroll.paid) {
